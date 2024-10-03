@@ -8,7 +8,7 @@ const createNewPost = async (username, text) => {
     if (!username) {
         return ERROR_CODES.UNAUTHORIZED
     }
-    if (!text) {
+    if (!text || typeof username !== 'string') {
         return ERROR_CODES.BAD_INPUT
     }
 }

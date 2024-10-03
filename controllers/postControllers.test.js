@@ -9,4 +9,8 @@ describe('createNewPost', () => {
         const res = await createNewPost('bartsimpson99')
         expect(res).toBe(400)
     })
+    it('Should return status 400 when username is not a string', async () => {
+        const res = await createNewPost({}, 'i just took a shower')
+        expect(res).toBe(400)
+    })
 })

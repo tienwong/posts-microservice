@@ -1,7 +1,8 @@
-const ERROR_CODES = {
-    UNAUTHORIZED: 401,
-    BAD_INPUT: 400,
-    SERVER_ERROR: 500
+const STATUS_CODES = {
+    ERROR_UNAUTHORIZED: 401,
+    ERROR_BAD_INPUT: 400,
+    SERVER_ERROR: 500,
+    SUCCESS: 200
 }
 
-module.exports = { ERROR_CODES }
+module.exports = { STATUS_CODES }

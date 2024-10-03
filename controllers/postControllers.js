@@ -1,4 +1,4 @@
-const { ERROR_CODES } = require('../utils/constants')
+const { STATUS_CODES } = require('../utils/constants')
 const { randomUUID } = require('crypto')
 const { addPostToDatabase } = require('../models/services/postService')
 
@@ -8,10 +8,10 @@ const getPostsByUsername = async (username) => {
 
 const createNewPost = async (username, text) => {
     if (!username) {
-        return ERROR_CODES.UNAUTHORIZED
+        return STATUS_CODES.ERROR_UNAUTHORIZED
     }
     if (!text || typeof username !== 'string' || typeof text !== 'string') {
-        return ERROR_CODES.BAD_INPUT
+        return STATUS_CODES.ERROR_BAD_INPUT
     }
     const newPost = {
         username,

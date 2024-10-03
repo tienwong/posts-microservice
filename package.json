@@ -7,6 +7,9 @@
     "test": "jest",
     "start": "node index.js"
   },
+  "jest": {
+    "verbose": true
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

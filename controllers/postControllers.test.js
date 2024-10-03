@@ -5,7 +5,7 @@ describe('createNewPost', () => {
         const res = await createNewPost()
         expect(res).toBe(401)
     })
-    it('Should return status 400 when text is not provided', async () => {
+    it('Should return status 400 (bad input) when text is not provided', async () => {
         const res = await createNewPost('bartsimpson99')
         expect(res).toBe(400)
     })

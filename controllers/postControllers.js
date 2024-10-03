@@ -1,4 +1,4 @@
-
+const { ERROR_CODES } = require('../utils/constants')
 
 const getPostsByUsername = async (username) => {
 
@@ -6,10 +6,10 @@ const getPostsByUsername = async (username) => {
 
 const createNewPost = async (username, text) => {
     if (!username) {
-        return 401
+        return ERROR_CODES.UNAUTHORIZED
     }
     if (!text) {
-        return 400
+        return ERROR_CODES.BAD_INPUT
     }
 }
 

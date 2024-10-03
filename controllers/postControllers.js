@@ -20,7 +20,11 @@ const createNewPost = async (username, text) => {
         numLikes: 0,
         numComments: 0
     }
-    await addPostToDatabase(newPost)
+    try {
+        await addPostToDatabase(newPost)
+        return STATUS_CODES.SUCCESS
+    } catch (err) {
+    }
 }
 
 const editPost = async (postUuid, text) => {

@@ -25,4 +25,9 @@ describe('createNewPost', () => {
         await createNewPost('fanfiction_ned_flanders', 'well howdy, postverse!')
         expect(databaseLogic).toHaveBeenCalled()
     })
+    it('Should return status code 200 (success) when the database write succeeds', async () => {
+        postService.addPostToDatabase.mockResolvedValueOnce({ msg: 'success' })
+        const res = await createNewPost('fanfiction_ned_flanders', 'well howdy, postverse!')
+        expect(res).toBe(200)
+    })
 })

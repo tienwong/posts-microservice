@@ -24,6 +24,7 @@ const createNewPost = async (username, text) => {
         await addPostToDatabase(newPost)
         return STATUS_CODES.SUCCESS
     } catch (err) {
+        return STATUS_CODES.SERVER_ERROR
     }
 }
 

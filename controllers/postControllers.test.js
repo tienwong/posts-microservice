@@ -30,4 +30,9 @@ describe('createNewPost', () => {
         const res = await createNewPost('fanfiction_ned_flanders', 'well howdy, postverse!')
         expect(res).toBe(200)
     })
+    it('Should return 500 (internal server error) when the database write fails', async () => {
+        postService.addPostToDatabase.mockRejectedValueOnce({ error: 'Some error'})
+        const res = await createNewPost('nothomersimpson', 'd\'oh!')
+        expect(res).toBe(500)
+    })
 })

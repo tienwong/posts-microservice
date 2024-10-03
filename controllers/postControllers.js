@@ -1,34 +1,16 @@
-const mongoose = require('mongoose')
 
-const getPostsByUsername = (username) => {
-    let result = null
-    if (!username) {
-        return result
-    }
+
+const getPostsByUsername = async (username) => {
+
 }
 
-const createNewPost = (username, text) => {
-    let result = null
-    if (!username || !text) {
-        return result
-    }
-    return result
+const createNewPost = async (username, text) => {
 }
 
-const editPost = (postUuid) => {
-    let result = null
-    if (!postUuid) {
-        return result
-    }
-    return result
+const editPost = async (postUuid, text) => {
 }
 
-const deletePost = (postUuid) => {
-    let result = null
-    if (!postUuid) {
-        return result
-    }
-    return result
+const deletePost = async (postUuid) => {
 }
 
 module.exports = {

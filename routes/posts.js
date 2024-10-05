@@ -9,13 +9,31 @@ postsRouter.get('/:username', async (req, res) => {
 
 postsRouter.post('/:username/newPost', async (req, res) => {
     const statusCode = await createNewPost(req.params.username, req.body.text)
-    switch (statusCode) {
+    let message = null
+    if (statusCode === 200) {
+        message = 'Post successfully added.'
+    } else if (statusCode === 400) {
+        message = 'Post body text must be a non-empty string. Please check your inputs.'
+    }
+    res.status(statusCode).json({
+        message
+    })
+/*     switch (statusCode) {
         case 200:
             res.status(statusCode).json({
                 message: 'Post successfully added.'
             })
             break
-    }
+        case 400:
+            res.status(statusCode).json({
+                message: 'Post body text must be a non-empty string.'
+            })
+            break
+        default:
+            res.status(statusCode).json({
+                message: 'this is a dummy message that will be sent because the tests aren\'t written yet hahaha'
+            })
+    } */
 })
 
 postsRouter.put('/:username/editPost/:postUuid', (req, res) => {

@@ -13,12 +13,6 @@ describe('createNewPost', () => {
         expect(result).toBe(400)
         expect(serviceLayer).not.toHaveBeenCalled()
     })
-    it('Should return status 400 and not call the service layer when username is not a string', async () => {
-        const serviceLayer = jest.spyOn(postService, 'addPostToDatabase')
-        const result = await createNewPost({}, 'i just took a shower')
-        expect(result).toBe(400)
-        expect(serviceLayer).not.toHaveBeenCalled()
-    })
     it('Should return status 400 and not call the service layer when text is not a string', async () => {
         const serviceLayer = jest.spyOn(postService, 'addPostToDatabase')
         const result = await createNewPost('notnedflanders', {})

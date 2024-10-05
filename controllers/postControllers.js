@@ -8,7 +8,7 @@ const getPostsByUsername = async (username) => {
 
 const createNewPost = async (username, text) => {
     // Username will always be truthy and a string because it comes from the URI of the POST endpoint that calls this method
-    if (!text || typeof username !== 'string' || typeof text !== 'string') {
+    if (!text || typeof text !== 'string') {
         return STATUS_CODES.ERROR_BAD_INPUT
     }
     const newPost = {

@@ -5,7 +5,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    uuid: {
+    postUUID: {
         type: String,
         required: true
     },

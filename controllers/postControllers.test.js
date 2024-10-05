@@ -4,6 +4,9 @@ const { createNewPost, deletePost, editPost, getPostsByUsername } = require('./p
 jest.mock('../models/services/postService')
 
 describe('createNewPost', () => {
+    afterEach(() => {
+        jest.resetAllMocks()
+    })
     it('Should return status code 401 (unauthorized) when username is not provided', async () => {
         const result = await createNewPost()
         expect(result).toBe(401)

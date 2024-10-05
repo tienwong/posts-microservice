@@ -9,10 +9,12 @@ postsRouter.get('/:username', async (req, res) => {
 
 postsRouter.post('/:username/newPost', async (req, res) => {
     const statusCode = await createNewPost(req.params.username, req.body.text)
-    if (statusCode === 200) {
-        res.status(statusCode).json({
-            message: 'Post successfully added.'
-        })
+    switch (statusCode) {
+        case 200:
+            res.status(statusCode).json({
+                message: 'Post successfully added.'
+            })
+            break
     }
 })
 

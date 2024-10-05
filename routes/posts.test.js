@@ -27,4 +27,12 @@ describe('POST /posts/:username/newPost', () => {
         expect(res.statusCode).toEqual(400)
         expect(res._body.message).toEqual('Post body text must be a non-empty string. Please check your inputs.')
     })
+    it('should return 500 and a descriptive error message if the request body is properly-formatted but an error occurs', async () => {
+        postService.addPostToDatabase.mockRejectedValueOnce({ msg: 'bad error is bad you guys'})
+        const res = await request(app).post('/posts/definitelyrealperson/newPost').send({
+            text: 'i am a non empty string'
+        })
+        expect(res.statusCode).toEqual(500)
+        expect(res._body.message).toEqual('An unknown error occurred when creating your post. Please try again later.')
+    })
 })

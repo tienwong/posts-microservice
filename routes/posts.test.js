@@ -10,7 +10,6 @@ describe('POST /posts/:username/newPost', () => {
         const res = await request(app).post('/posts/bartsimpson/newPost').send({
             text: 'eat my shorts'
         })
-        console.log(res)
         expect(res.statusCode).toEqual(200)
         expect(res._body.message).toEqual('Post successfully added.')
     })

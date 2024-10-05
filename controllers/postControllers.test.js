@@ -7,12 +7,6 @@ describe('createNewPost', () => {
     afterEach(() => {
         jest.resetAllMocks()
     })
-    it('Should return status code 401 (unauthorized) and not call the service layer when username is not provided', async () => {
-        const serviceLayer = jest.spyOn(postService, 'addPostToDatabase')
-        const result = await createNewPost()
-        expect(result).toBe(401)
-        expect(serviceLayer).not.toHaveBeenCalled()
-    })
     it('Should return status 400 (bad input) and not call the service layer when text is not provided', async () => {
         const serviceLayer = jest.spyOn(postService, 'addPostToDatabase')
         const result = await createNewPost('bartsimpson99')

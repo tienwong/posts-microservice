@@ -10,8 +10,7 @@ const addPostToDatabase = async (post) => {
             result = { msg: 'success' }
         })
         .catch((err) => {
-            // just some dummy code
-            console.log(err)
+            result = err
         })
     return result
 }

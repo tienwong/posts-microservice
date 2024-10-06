@@ -17,4 +17,10 @@ describe('addPostToDatabase', () => {
         const res = await addPostToDatabase(mockPost)
         expect(res).toEqual({ msg: 'success' })
     })
+    it('should return an error message if an error occurs when trying to write to the database', async () => {
+        const mockSave = jest.fn().mockRejectedValueOnce({ error: 'Something went wrong' })
+        PostModel.prototype.save = mockSave
+        const res = await addPostToDatabase(mockPost)
+        expect(res).toEqual({ error: 'Something went wrong' })
+    })
 })

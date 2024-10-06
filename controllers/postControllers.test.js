@@ -25,7 +25,6 @@ describe('createNewPost', () => {
         expect(databaseWriteFunction).toHaveBeenCalled()
     })
     it('Should return status code 200 (success) when the database write succeeds', async () => {
-        // TODO: Change this to the actual success message once I actually implement the service layer
         postService.addPostToDatabase.mockResolvedValueOnce({ msg: 'success' })
         const result = await createNewPost('fanfiction_ned_flanders', 'well howdy, postverse!')
         expect(result).toBe(200)

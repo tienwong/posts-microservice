@@ -12,17 +12,23 @@ describe('service layer', () => {
             numLikes: 0,
             numComments: 0
         }
-        it('should return a success message when the write to the database is successful', async () => {
-            const mockSave = jest.fn().mockResolvedValueOnce({ msg: 'success' })
+        const mockMongoDocument = {
+            ...mockPost,
+            _id: 'new ObjectId(\'670f0aace87a83630543c8d8\')',
+            __v: 0
+        }
+        it('should return a response containing the post and a success message when the write to the database is successful', async () => {
+            const mockSave = jest.fn().mockResolvedValueOnce(mockMongoDocument)
             PostModel.prototype.save = mockSave
             const res = await addPostToDatabase(mockPost)
-            expect(res).toEqual({ msg: 'success' })
+            expect(res).toMatchObject({ post: {...mockMongoDocument }, msg: 'Success' })
         })
         it('should return an error message if an error occurs when trying to write to the database', async () => {
-            const mockSave = jest.fn().mockRejectedValueOnce({ error: 'Something went wrong' })
+            const mockError = { error: 'Something went wrong' }
+            const mockSave = jest.fn().mockRejectedValueOnce(mockError)
             PostModel.prototype.save = mockSave
             const res = await addPostToDatabase(mockPost)
-            expect(res).toEqual({ error: 'Something went wrong' })
+            expect(res).toMatchObject({ error: {...mockError}, msg: 'An error occurred writing the new post to the database. Please try again later.' })
         })
     })
 })

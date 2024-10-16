@@ -7,10 +7,11 @@ const addPostToDatabase = async (post) => {
     })
     await newPost.save()
         .then((doc) => {
-            result = { msg: 'success' }
+            console.log(doc)
+            result = { post: doc, msg: 'Success' }
         })
         .catch((err) => {
-            result = err
+            result = { error: err, msg: 'An error occurred writing the new post to the database. Please try again later.'}
         })
     return result
 }
